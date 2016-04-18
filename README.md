@@ -15,16 +15,21 @@ Erlang Localtime
 ### Details
 
 #### Types
-* `DateTime = {date(), time()}`.
-* `TimeZone = TimeZoneFrom = TimeZoneTo = list()`, e.g. `"Europe/Moscow"`, `"America/NewYork"` or abbreviations `"MSK"`, `"MSD"`, etc.
-* `ZoneName =  {StdAbbr :: list(), StdName :: list()}`, e.g. `{"MSK","MSK"}`
-* `ZoneShift = {Sign :: '+' | '-', Offset :: non_neg_integer(), RemOffset :: non_neg_integer()}`
+* `DateTime` = `{date(), time()}`.
+* `TimeZone` = `TimeZoneFrom` = `TimeZoneTo` = `list()`, e.g. `"Europe/Moscow"`, `"America/NewYork"` or abbreviations `"MSK"`, `"MSD"`, etc.
+* `ZoneName` =  `{StdAbbr :: list(), StdName :: list()}`, e.g. `{"MSK","MSK"}`
+* `ZoneShift` = `{Sign :: '+' | '-', Offset :: non_neg_integer(), RemOffset :: non_neg_integer()}`
 
 `utc_to_local(DateTime, TimeZone) → DateTime | {error, Reason}`
+
 `local_to_utc(DateTime, TimeZone) → DateTime | {error, Reason}`
+
 `local_to_local(DateTime, TimeZoneFrom, TimeZoneTo) → DateTime`
+
 `tz_name(DateTime, TimeZone) → ZoneName | {error, Reason}`
+
 `tz_shift(DateTime, TimeZone) → 0 | ZoneShift | {error, Reason}`
+
 `tz_shift(DateTime, TimeZoneFrom, TimeZoneTo) → 0 | ZoneShift | {error, Reason}`
 
 >Note: abbreviation is just used to find appropriate timezone name. If you want to convert `"MSK"` → `"PDT"`, but source timezone is not in daylight saving, it will be corrected by library and `"MSK"` → `"PST"` conversion will be made.
