@@ -212,12 +212,10 @@ fmt_min(Shift) when Shift < 0 ->
 fmt_min(Shift) ->
    {'+', Shift div 60, Shift rem 60}.
 
-fmt_shift({'+', H, M}) ->
-   H * 60 + M;
-fmt_shift({'-', H, M}) ->
-   -(H * 60 + M);
-fmt_shift(Any) ->
-   throw(Any).
+fmt_shift({'+', H, M}) -> H * 60 + M;
+fmt_shift({'-', H, M}) -> -(H * 60 + M);
+fmt_shift(0) -> 0;
+fmt_shift(Any) -> throw(Any).
 
 tr_char(String, From, To) ->
    case string:chr(String, From) of
