@@ -26,7 +26,7 @@ Erlang Localtime
 
 `local_to_utc(DateTime, TimeZone) → DateTime | {error, Reason}`
 
-`local_to_local(DateTime, TimeZoneFrom, TimeZoneTo) → DateTime`
+`local_to_local(DateTime, TimeZoneFrom, TimeZoneTo) → DateTime | {error, Reason}`
 
 `tz_name(DateTime, TimeZone) → ZoneName | {error, Reason}`
 
